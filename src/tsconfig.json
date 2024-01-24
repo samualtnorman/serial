@@ -1,0 +1,7 @@
+{
+	"extends": "..",
+	"compilerOptions": {
+		"exactOptionalPropertyTypes": true
+	},
+	"include": [ "**/*" ]
+}
