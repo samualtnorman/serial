@@ -10,6 +10,7 @@ import packageJson from "./package.json" assert { type: "json" }
 /** @typedef {import("@babel/preset-env").Options} BabelPresetEnvOptions */
 
 /** @type {RollupOptions} */ export default {
+	external: Object.keys(packageJson.dependencies).map(name => new RegExp(`^${name}(?:$|/)`)),
 	input: "src/index.ts",
 	output: { dir: "dist" },
 	plugins: [
@@ -23,7 +24,6 @@ import packageJson from "./package.json" assert { type: "json" }
 		}),
 		terser({ keep_fnames: true, compress: { passes: Infinity }, maxWorkers: Math.floor(cpus().length / 2) })
 	],
-	external: Object.keys(packageJson.dependencies).map(name => new RegExp(`^${name}(?:$|/)`)),
 	strictDeprecations: true,
 	treeshake: { moduleSideEffects: false }
 }
