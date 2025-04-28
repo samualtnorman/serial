@@ -14,6 +14,6 @@ export const Float64EncoderPlugin: EncoderPlugin = {
 
 export const Float64DecoderPlugin: DecoderPlugin = {
 	tag: Float64Tag,
-	decode: (_schema, _callPlugin, data, index = { $: 0 }) =>
+	decode: (_schema, _callPlugin, data, index) =>
 		new Float64Array(new Uint8Array(data.slice(index.$, index.$ += 8)).buffer)[0]
 }

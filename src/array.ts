@@ -34,14 +34,14 @@ export const ArrayEncoderPlugin: EncoderPlugin = {
 
 export const ArrayDecoderPlugin: DecoderPlugin = {
 	tag: ArrayTag,
-	decode(schema, callPlugin, data, index = { $: 0 }) {
+	decode(schema, callPlugin, data, index) {
 		assert(isArraySchema(schema), HERE)
 		
 		const length = Bleb.toNumber(data, index)
 		const result = Array(length)
 
 		for (let resultIndex = 0; resultIndex < length; resultIndex++)
-			result[resultIndex] = callPlugin(schema.schema, data, index)
+			result[resultIndex] = callPlugin(schema.schema)
 
 		return result
 	}

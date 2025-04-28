@@ -26,9 +26,9 @@ export const UnionEncoderPlugin: EncoderPlugin = {
 
 export const UnionDecoderPlugin: DecoderPlugin = {
 	tag: UnionTag,
-	decode(schema, callPlugin, data, index = { $: 0 }) {
+	decode(schema, callPlugin, data, index) {
 		assert(isUnionSchema(schema), HERE)
 		
-		return callPlugin(ensure(schema.schemas[Bleb.toNumber(data, index)], HERE), data, index)
+		return callPlugin(ensure(schema.schemas[Bleb.toNumber(data, index)], HERE))
 	}
 }

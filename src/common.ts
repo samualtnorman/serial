@@ -13,10 +13,5 @@ export type EncoderPlugin = {
 
 export type DecoderPlugin = {
 	tag: symbol,
-	decode: (
-		schema: Schema,
-		callPlugin: (schema: Schema, data: number[], index?: { $: number }) => unknown,
-		data: number[],
-		index?: { $: number }
-	) => unknown
+	decode: (schema: Schema, callPlugin: (schema: Schema) => unknown, data: number[], index: { $: number }) => unknown
 }
