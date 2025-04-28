@@ -12,8 +12,8 @@ importers:
         specifier: 0.13.1-964d4e5
         version: 0.13.1-964d4e5
       bleb:
-        specifier: 0.1.0-1fdc6c6
-        version: 0.1.0-1fdc6c6
+        specifier: 0.1.0-571851d
+        version: 0.1.0-571851d
     devDependencies:
       '@samual/rollup-config':
         specifier: 0.1.3-69a8c72
@@ -776,8 +776,8 @@ packages:
     resolution: {integrity: sha512-pBrCvAEddVcZVmD3jBpuNqczX04gvIFVkG1s4kjIUmt0fYhG+feL7k+aXFpAmugMo9aG1lXrgwpjFWj3oh+1qQ==}
     engines: {node: ^18.20 || ^20.10 || >=22}
 
-  bleb@0.1.0-1fdc6c6:
-    resolution: {integrity: sha512-6xrXHVkLrhR5KaMEY2AJvSN1RnbZilVneNv6T97NqU9q/6VzqD/HBYIdmAB4q6RN9M/9rr+ucV6OzaVRM7Lmgg==}
+  bleb@0.1.0-571851d:
+    resolution: {integrity: sha512-L42vs/PZjqkkwpS3Zq2n2xoP4iPyd5rmDuEjSvkUwj/t2AU5BVC1UA6V2FvWTvgNr2meBP3QAH2NZFaiLp73bg==}
     engines: {node: ^18.20 || ^20.10 || >=22}
 
   browserslist@4.24.4:
@@ -1899,7 +1899,7 @@ snapshots:
     dependencies:
       '@babel/types': 7.27.0
 
-  bleb@0.1.0-1fdc6c6:
+  bleb@0.1.0-571851d:
     dependencies:
       '@samual/lib': 0.13.0
 

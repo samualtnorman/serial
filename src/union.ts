@@ -19,7 +19,7 @@ export const UnionEncoderPlugin: EncoderPlugin = {
 			const encoded = callPlugin(subschema, value)
 
 			if (encoded)
-				return [ ...Bleb.fromBigInt(BigInt(index)), ...encoded ]
+				return [ ...Bleb.fromNumber(index), ...encoded ]
 		}
 	}
 }
@@ -29,6 +29,6 @@ export const UnionDecoderPlugin: DecoderPlugin = {
 	decode(schema, callPlugin, data, index = { $: 0 }) {
 		assert(isUnionSchema(schema), HERE)
 		
-		return callPlugin(ensure(schema.schemas[Number(Bleb.toBigInt(data,index))], HERE), data, index)
+		return callPlugin(ensure(schema.schemas[Bleb.toNumber(data, index)], HERE), data, index)
 	}
 }
