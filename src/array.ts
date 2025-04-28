@@ -17,7 +17,7 @@ export const ArrayEncoderPlugin: EncoderPlugin = {
 
 		if (Array.isArray(value)) {
 			const result = [ ...Bleb.fromNumber(value.length) ]
-			
+
 			for (const item of value) {
 				const encoded = callPlugin(schema.schema, item)
 
@@ -36,7 +36,7 @@ export const ArrayDecoderPlugin: DecoderPlugin = {
 	tag: ArrayTag,
 	decode(schema, callPlugin, data, index) {
 		assert(isArraySchema(schema), HERE)
-		
+
 		const length = Bleb.toNumber(data, index)
 		const result = Array(length)
 

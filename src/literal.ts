@@ -13,7 +13,7 @@ export const LiteralEncoderPlugin: EncoderPlugin = {
 	tag: LiteralTag,
 	encode(schema, _, value) {
 		assert(isLiteralSchema(schema), HERE)
-		
+
 		return Object.is(value, schema.value) ? [] : undefined
 	}
 }

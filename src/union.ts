@@ -14,7 +14,7 @@ export const UnionEncoderPlugin: EncoderPlugin = {
 	tag: UnionTag,
 	encode(schema, callPlugin, value) {
 		assert(isUnionSchema(schema), HERE)
-		
+
 		for (const [ index, subschema ] of schema.schemas.entries()) {
 			const encoded = callPlugin(subschema, value)
 
@@ -28,7 +28,7 @@ export const UnionDecoderPlugin: DecoderPlugin = {
 	tag: UnionTag,
 	decode(schema, callPlugin, data, index) {
 		assert(isUnionSchema(schema), HERE)
-		
+
 		return callPlugin(ensure(schema.schemas[Bleb.toNumber(data, index)], HERE))
 	}
 }
