@@ -1,0 +1,9 @@
+{
+	"extends": "..",
+	"include": [ "**/*" ],
+	"compilerOptions": {
+		"declaration": true,
+		"outDir": "../dist",
+		"types": [ "@total-typescript/ts-reset", "babel-plugin-here/env" ]
+	}
+}
