@@ -5,8 +5,8 @@ import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
 const UnionTag = Symbol()
 type UnionTag = typeof UnionTag
 
-export type UnionSchema = Schema & { tag: UnionTag, schemas: Schema[] }
-export const unionSchema = (schemas: Schema[]): UnionSchema => ({ tag: UnionTag, schemas })
+export type UnionSchema<T = unknown> = Schema<T> & { tag: UnionTag, schemas: Schema[] }
+export const unionSchema = <T>(schemas: Schema<T>[]) => ({ tag: UnionTag, schemas }) as UnionSchema<T>
 
 const isUnionSchema = (schema: Schema): schema is UnionSchema => schema.tag == UnionTag
 

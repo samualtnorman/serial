@@ -1,4 +1,6 @@
-export type Schema = { tag: symbol }
+declare type Type = { readonly Type: unique symbol }["Type"]
+
+export type Schema<T = unknown> = { tag: symbol } & { [K in Type]: T }
 
 export type EncoderPlugin = {
 	tag: symbol,

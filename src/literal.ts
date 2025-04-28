@@ -4,8 +4,8 @@ import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
 const LiteralTag = Symbol()
 type LiteralTag = typeof LiteralTag
 
-export type LiteralSchema = Schema & { tag: LiteralTag, value: unknown }
-export const literalSchema = (value: unknown): LiteralSchema => ({ tag: LiteralTag, value })
+export type LiteralSchema<T = unknown> = Schema<T> & { tag: LiteralTag, value: unknown }
+export const literalSchema = <const T>(value: T) => ({ tag: LiteralTag, value }) as LiteralSchema<T>
 
 const isLiteralSchema = (schema: Schema): schema is LiteralSchema => schema.tag == LiteralTag
 
