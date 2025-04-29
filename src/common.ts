@@ -3,15 +3,15 @@ declare type Type = { readonly Type: unique symbol }["Type"]
 export type Schema<T = unknown> = { tag: symbol } & { [K in Type]: T }
 
 export type EncoderPlugin = {
-	tag: symbol,
+	tag: symbol
 	encode: (
 		schema: Schema,
 		callPlugin: (schema: Schema, value: unknown) => number[] | undefined,
 		value: unknown
 	) => number[] | undefined
-}
+} | EncoderPlugin[]
 
 export type DecoderPlugin = {
-	tag: symbol,
+	tag: symbol
 	decode: (schema: Schema, callPlugin: (schema: Schema) => unknown, data: number[], index: { $: number }) => unknown
-}
+} | DecoderPlugin[]
