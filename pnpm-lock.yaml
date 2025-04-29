@@ -8,13 +8,13 @@ importers:
 
   .:
     dependencies:
-      '@samual/lib':
-        specifier: 0.13.1-964d4e5
-        version: 0.13.1-964d4e5
       bleb:
         specifier: 0.1.0-571851d
         version: 0.1.0-571851d
     devDependencies:
+      '@samual/lib':
+        specifier: 0.13.1-5f3d742
+        version: 0.13.1-5f3d742
       '@samual/rollup-config':
         specifier: 0.1.3-69a8c72
         version: 0.1.3-69a8c72(@babel/core@7.26.10)(prettier@3.5.3)(rollup@4.40.1)
@@ -721,8 +721,8 @@ packages:
     resolution: {integrity: sha512-/JRovXM3eGw+0M3tm2NfIllPfrMFDepxAYEBfENd1jlp8UX1sdJS+iy+h4HiUiyhSHZUxZTi7zTseICumHQHTQ==}
     engines: {node: ^18.20 || ^20.10 || >=22}
 
-  '@samual/lib@0.13.1-964d4e5':
-    resolution: {integrity: sha512-y0Eq5OH6d8lNNGB+sM3nYEqH2kyaU2HQwkr2iMmy3Js6mceowYLa9oN6obaXHYWYegwSzEsjasEHNlzvHwQwFA==}
+  '@samual/lib@0.13.1-5f3d742':
+    resolution: {integrity: sha512-bncLPtRBTnpi2ktNlVHwMix+SO2EcrTQHfIWVzEJ9Bm1JD/QX5rhaD4D4vleeM57sOJMXToRfgKX6NXUTT3JQA==}
     engines: {node: ^18.20 || ^20.10 || >=22}
 
   '@samual/lib@0.13.1-e3379e2':
@@ -1825,7 +1825,7 @@ snapshots:
 
   '@samual/lib@0.13.1-4031e7a': {}
 
-  '@samual/lib@0.13.1-964d4e5': {}
+  '@samual/lib@0.13.1-5f3d742': {}
 
   '@samual/lib@0.13.1-e3379e2': {}
 
