@@ -2,7 +2,7 @@ import { isRecord } from "@samual/lib/isRecord"
 import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
 import { assert } from "@samual/lib/assert"
 
-const ObjectTag = Symbol()
+const ObjectTag = Symbol(`Object`)
 type ObjectTag = typeof ObjectTag
 
 type Layout = Record<PropertyKey, Schema>

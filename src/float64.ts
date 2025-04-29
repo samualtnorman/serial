@@ -1,6 +1,6 @@
 import { DecoderPlugin, EncoderPlugin, Schema } from "./common"
 
-const Float64Tag = Symbol()
+const Float64Tag = Symbol(`Float64`)
 
 export const Float64Schema = { tag: Float64Tag } as Schema<number>
 

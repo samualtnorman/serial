@@ -2,7 +2,7 @@ import { assert } from "@samual/lib/assert"
 import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
 import * as Bleb from "bleb"
 
-const ArrayTag = Symbol()
+const ArrayTag = Symbol(`Array`)
 type ArrayTag = typeof ArrayTag
 
 export type ArraySchema<T = unknown> = Schema<T[]> & { tag: ArrayTag, schema: Schema<T> }

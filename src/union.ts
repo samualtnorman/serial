@@ -2,7 +2,7 @@ import { assert, ensure } from "@samual/lib/assert"
 import * as Bleb from "bleb"
 import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
 
-const UnionTag = Symbol()
+const UnionTag = Symbol(`Union`)
 type UnionTag = typeof UnionTag
 
 export type UnionSchema<T = unknown> = Schema<T> & { tag: UnionTag, schemas: Schema[] }

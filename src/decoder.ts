@@ -1,4 +1,4 @@
-import { assert, ensure } from "@samual/lib/assert"
+import { assert } from "@samual/lib/assert"
 import type { DecoderPlugin, Schema } from "./common"
 
 export const makeDecoder = <T>(schema: Schema<T>, plugins: DecoderPlugin[]) => {
@@ -9,9 +9,15 @@ export const makeDecoder = <T>(schema: Schema<T>, plugins: DecoderPlugin[]) => {
 	}))
 
 	return (data: number[], index = { $: 0 }) => {
-		const callPlugin = (schema: Schema) =>
-			ensure(tagToPluginMap.get(schema.tag)).decode(schema, callPlugin, data, index)
-
 		return callPlugin(schema) as T
+
+		function callPlugin(schema: Schema) {
+			const plugin = tagToPluginMap.get(schema.tag)
+
+			if (!plugin)
+				throw Error(`Missing plugin ${schema.tag.description}`)
+
+			return plugin.decode(schema, callPlugin, data, index)
+		}
 	}
 }

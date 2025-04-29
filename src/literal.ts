@@ -1,7 +1,7 @@
 import { assert } from "@samual/lib/assert"
 import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
 
-const LiteralTag = Symbol()
+const LiteralTag = Symbol(`Literal`)
 type LiteralTag = typeof LiteralTag
 
 export type LiteralSchema<T = unknown> = Schema<T> & { tag: LiteralTag, value: unknown }

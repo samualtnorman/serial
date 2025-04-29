@@ -8,8 +8,14 @@ export const makeEncoder = <T>(schema: Schema<T>, plugins: EncoderPlugin[]) => {
 		return [ plugin.tag, plugin ]
 	}))
 
-	const callPlugin = (schema: Schema, value: unknown) =>
-		ensure(tagToPluginMap.get(schema.tag), HERE).encode(schema, callPlugin, value)
-
 	return (value: T) => ensure(callPlugin(schema, value), HERE)
+
+	function callPlugin(schema: Schema, value: unknown) {
+		const plugin = tagToPluginMap.get(schema.tag)
+
+		if (!plugin)
+			throw Error(`Missing plugin ${schema.tag.description}`)
+
+		return plugin.encode(schema, callPlugin, value)
+	}
 }
