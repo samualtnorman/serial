@@ -6,7 +6,7 @@ import { ObjectDecoderPlugin, ObjectEncoderPlugin, objectSchema } from "./object
 const MapTag = Symbol(`Map`)
 type MapTag = typeof MapTag
 
-export type MapSchema<T = unknown> = Schema<T> & { tag: MapTag, schema: Schema }
+export type MapSchema<T = unknown> = Schema<T> & { tag: MapTag, schema: Schema<{ key: PropertyKey, value: unknown }[]> }
 
 export const mapSchema = <TKey, TValue>(keySchema: Schema<TKey>, valueSchema: Schema<TValue>) =>
 	({ tag: MapTag, schema: arraySchema(objectSchema({ key: keySchema, value: valueSchema })) }) as any as MapSchema<Map<TKey, TValue>>
@@ -33,7 +33,7 @@ export const MapDecoderPlugin: DecoderPlugin = [
 		decode(schema, callPlugin) {
 			assert(isMapSchema(schema), HERE)
 
-			return new Map((callPlugin(schema.schema) as any).map(({ key, value }: any) => [ key, value ]))
+			return new Map(callPlugin(schema.schema).map(({ key, value }) => [ key, value ]))
 		}
 	},
 	ArrayDecoderPlugin,

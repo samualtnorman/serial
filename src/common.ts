@@ -6,12 +6,12 @@ export type EncoderPlugin = {
 	tag: symbol
 	encode: (
 		schema: Schema,
-		callPlugin: (schema: Schema, value: unknown) => number[] | undefined,
+		callPlugin: <T>(schema: Schema<T>, value: T) => number[] | undefined,
 		value: unknown
 	) => number[] | undefined
 } | EncoderPlugin[]
 
 export type DecoderPlugin = {
 	tag: symbol
-	decode: (schema: Schema, callPlugin: (schema: Schema) => unknown, data: number[], index: { $: number }) => unknown
+	decode: (schema: Schema, callPlugin: <T>(schema: Schema<T>) => T, data: number[], index: { $: number }) => unknown
 } | DecoderPlugin[]
