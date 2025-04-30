@@ -6,7 +6,7 @@ const UnionTag = Symbol(`Union`)
 type UnionTag = typeof UnionTag
 
 export type UnionSchema<T = unknown> = Schema<T> & { tag: UnionTag, schemas: Schema[] }
-export const unionSchema = <T>(schemas: Schema<T>[]) => ({ tag: UnionTag, schemas }) as UnionSchema<T>
+export const unionSchema = <TOption extends Schema>(schemas: TOption[]) => ({ tag: UnionTag, schemas }) as any as Schema<TOption extends Schema<infer T> ? T : never>
 
 const isUnionSchema = (schema: Schema): schema is UnionSchema => schema.tag == UnionTag
 
