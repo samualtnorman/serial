@@ -11,5 +11,9 @@
 		"babel-plugin-here": "1.0.3-964091e",
 		"rollup": "^4.40.1",
 		"typescript": "^5.8.3"
+	},
+	"exports": {
+		"./*": "./*.js",
+		"./*.js": "./*.js"
 	}
 }
