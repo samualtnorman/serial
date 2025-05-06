@@ -22,7 +22,7 @@ export const ArrayEncoderPlugin: EncoderPlugin = {
 				const encoded = callPlugin(schema.schema, item)
 
 				if (!encoded)
-					return undefined
+					return
 
 				result.push(...encoded)
 			}
