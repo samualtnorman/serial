@@ -1,6 +1,4 @@
-import { DecoderPlugin, EncoderPlugin, Schema } from "."
-import { makeDecoder } from "./decoder"
-import { makeEncoder } from "./encoder"
+import { type DecoderPlugin, type EncoderPlugin, makeDecoder, makeEncoder, type Schema } from "."
 
 const Float64Tag = Symbol(`Float64`)
 

@@ -1,7 +1,6 @@
+import { assert, ensure } from "@samual/lib/assert"
 import { ArrayDecoderPlugin, ArrayEncoderPlugin, arraySchema } from "./array"
 import { BooleanSchema } from "./boolean"
-import { makeDecoder } from "./decoder"
-import { makeEncoder } from "./encoder"
 import { Float64DecoderPlugin, Float64EncoderPlugin, Float64Schema } from "./float64"
 import { FixedLengthHexStringDecoderPlugin, FixedLengthHexStringEncoderPlugin, fixedLengthHexStringSchema } from "./hex"
 import { Int54DecoderPlugin, Int54EncoderPlugin, Int54Schema, Uint8DecoderPlugin, Uint8EncoderPlugin, Uint8Schema } from "./integer"
@@ -29,6 +28,46 @@ export type DecoderPlugin = {
 } | DecoderPlugin[]
 
 export type InferSchemaType<TSchema extends Schema> = TSchema extends Schema<infer T> ? T : never
+
+export const makeEncoder = <T>(schema: Schema<T>, plugins: EncoderPlugin[]) => {
+	const tagToPluginMap = new Map(plugins.flat(20).map(plugin => {
+		assert(!Array.isArray(plugin), HERE)
+
+		return [ plugin.tag, plugin ]
+	}))
+
+	return (value: T) => ensure(callPlugin(schema, value), HERE)
+
+	function callPlugin(schema: Schema, value: unknown) {
+		const plugin = tagToPluginMap.get(schema.tag)
+
+		if (!plugin)
+			throw Error(`Missing plugin ${schema.tag.description}`)
+
+		return plugin.encode(value, schema, callPlugin)
+	}
+}
+
+export const makeDecoder = <T>(schema: Schema<T>, plugins: DecoderPlugin[]) => {
+	const tagToPluginMap = new Map(plugins.flat(20).map(plugin => {
+		assert(!Array.isArray(plugin), HERE)
+
+		return [ plugin.tag, plugin ]
+	}))
+
+	return (data: number[], index = { $: 0 }) => {
+		return callPlugin(schema) as T
+
+		function callPlugin(schema: Schema) {
+			const plugin = tagToPluginMap.get(schema.tag)
+
+			if (!plugin)
+				throw Error(`Missing plugin ${schema.tag.description}`)
+
+			return plugin.decode(data, index, schema, callPlugin)
+		}
+	}
+}
 
 if (import.meta.vitest) {
 	const { test, expect } = import.meta.vitest

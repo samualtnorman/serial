@@ -1,6 +1,4 @@
-import type { DecoderPlugin, EncoderPlugin } from "."
-import { makeDecoder } from "./decoder"
-import { makeEncoder } from "./encoder"
+import { makeDecoder, makeEncoder, type DecoderPlugin, type EncoderPlugin } from "."
 import { FalseSchema, LiteralDecoderPlugin, LiteralEncoderPlugin, TrueSchema } from "./literal"
 import { UnionDecoderPlugin, UnionEncoderPlugin, unionSchema } from "./union"
 

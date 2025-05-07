@@ -1,6 +1,4 @@
-import type { DecoderPlugin, EncoderPlugin, Schema } from "."
-import { makeDecoder } from "./decoder"
-import { makeEncoder } from "./encoder"
+import { makeDecoder, makeEncoder, type DecoderPlugin, type EncoderPlugin, type Schema } from "."
 
 const Uint8Tag = Symbol(`Uint8`)
 
