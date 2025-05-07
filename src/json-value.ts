@@ -1,7 +1,7 @@
 import type { JsonValue } from "@samual/lib"
+import type { Schema } from "."
 import { arraySchema } from "./array"
 import { BooleanDecoderPlugin, BooleanEncoderPlugin, BooleanSchema } from "./boolean"
-import type { Schema } from "./common"
 import { makeDecoder } from "./decoder"
 import { makeEncoder } from "./encoder"
 import { Float64DecoderPlugin, Float64EncoderPlugin, Float64Schema } from "./float64"

@@ -1,5 +1,5 @@
 import { assert } from "@samual/lib/assert"
-import type { DecoderPlugin, Schema } from "./common"
+import type { DecoderPlugin, Schema } from "."
 
 export const makeDecoder = <T>(schema: Schema<T>, plugins: DecoderPlugin[]) => {
 	const tagToPluginMap = new Map(plugins.flat(20).map(plugin => {

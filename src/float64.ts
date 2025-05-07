@@ -1,4 +1,4 @@
-import { DecoderPlugin, EncoderPlugin, Schema } from "./common"
+import { DecoderPlugin, EncoderPlugin, Schema } from "."
 import { makeDecoder } from "./decoder"
 import { makeEncoder } from "./encoder"
 

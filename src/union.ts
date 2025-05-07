@@ -1,6 +1,6 @@
 import { assert, ensure } from "@samual/lib/assert"
 import * as Bleb from "bleb"
-import type { DecoderPlugin, EncoderPlugin, InferSchemaType, Schema } from "./common"
+import type { DecoderPlugin, EncoderPlugin, InferSchemaType, Schema } from "."
 
 const UnionTag = Symbol(`Union`)
 type UnionTag = typeof UnionTag

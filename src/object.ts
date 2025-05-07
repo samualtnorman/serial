@@ -1,6 +1,6 @@
 import { assert } from "@samual/lib/assert"
 import { isRecord } from "@samual/lib/isRecord"
-import type { DecoderPlugin, EncoderPlugin, InferSchemaType, Schema } from "./common"
+import type { DecoderPlugin, EncoderPlugin, InferSchemaType, Schema } from "."
 import { getKeys } from "./internal"
 
 const ObjectTag = Symbol(`Object`)

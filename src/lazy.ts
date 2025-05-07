@@ -1,4 +1,4 @@
-import type { Schema } from "./common"
+import type { Schema } from "."
 
 export const lazySchema = <T>(getter: () => Schema<T>) => ({
 	get tag() {

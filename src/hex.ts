@@ -1,8 +1,8 @@
 import { assert } from "@samual/lib/assert"
-import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
 import * as Bleb from "bleb"
-import { makeEncoder } from "./encoder"
+import type { DecoderPlugin, EncoderPlugin, Schema } from "."
 import { makeDecoder } from "./decoder"
+import { makeEncoder } from "./encoder"
 
 const HexStringTag = Symbol(`HexString`)
 

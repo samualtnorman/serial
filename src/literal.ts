@@ -1,5 +1,5 @@
 import { assert } from "@samual/lib/assert"
-import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
+import type { DecoderPlugin, EncoderPlugin, Schema } from "."
 
 const LiteralTag = Symbol(`Literal`)
 type LiteralTag = typeof LiteralTag

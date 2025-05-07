@@ -1,6 +1,6 @@
 import { assert } from "@samual/lib/assert"
 import { ArrayDecoderPlugin, ArrayEncoderPlugin, arraySchema } from "./array"
-import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
+import type { DecoderPlugin, EncoderPlugin, Schema } from "."
 import { ObjectDecoderPlugin, ObjectEncoderPlugin, objectSchema } from "./object"
 import { isRecord } from "@samual/lib/isRecord"
 import { getKeys } from "./internal"

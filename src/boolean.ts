@@ -1,4 +1,4 @@
-import type { DecoderPlugin, EncoderPlugin } from "./common"
+import type { DecoderPlugin, EncoderPlugin } from "."
 import { makeDecoder } from "./decoder"
 import { makeEncoder } from "./encoder"
 import { FalseSchema, LiteralDecoderPlugin, LiteralEncoderPlugin, TrueSchema } from "./literal"

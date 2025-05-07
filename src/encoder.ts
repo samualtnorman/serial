@@ -1,5 +1,5 @@
 import { assert, ensure } from "@samual/lib/assert"
-import type { EncoderPlugin, Schema } from "./common"
+import type { EncoderPlugin, Schema } from "."
 
 export const makeEncoder = <T>(schema: Schema<T>, plugins: EncoderPlugin[]) => {
 	const tagToPluginMap = new Map(plugins.flat(20).map(plugin => {

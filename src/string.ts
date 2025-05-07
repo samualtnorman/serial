@@ -1,5 +1,5 @@
 import * as Bleb from "bleb"
-import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
+import type { DecoderPlugin, EncoderPlugin, Schema } from "."
 import { makeDecoder } from "./decoder"
 import { makeEncoder } from "./encoder"
 
