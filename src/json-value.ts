@@ -1,12 +1,12 @@
 import type { JsonValue } from "@samual/lib"
 import { arraySchema } from "./array"
-import { BooleanSchema } from "./boolean"
+import { BooleanDecoderPlugin, BooleanEncoderPlugin, BooleanSchema } from "./boolean"
 import type { Schema } from "./common"
 import { makeDecoder } from "./decoder"
 import { makeEncoder } from "./encoder"
 import { Float64DecoderPlugin, Float64EncoderPlugin, Float64Schema } from "./float64"
 import { lazySchema } from "./lazy"
-import { LiteralDecoderPlugin, LiteralEncoderPlugin, NullSchema } from "./literal"
+import { NullSchema } from "./literal"
 import { RecordDecoderPlugin, RecordEncoderPlugin, recordSchema } from "./record"
 import { StringDecoderPlugin, StringEncoderPlugin, StringSchema } from "./string"
 import { unionSchema } from "./union"
@@ -21,10 +21,10 @@ export const JsonValueSchema: Schema<JsonValue> = unionSchema([
 ])
 
 export const JsonValueEncoderPlugin =
-	[ LiteralEncoderPlugin, Float64EncoderPlugin, StringEncoderPlugin, RecordEncoderPlugin ]
+	[ BooleanEncoderPlugin, Float64EncoderPlugin, StringEncoderPlugin, RecordEncoderPlugin ]
 
 export const JsonValueDecoderPlugin =
-	[ LiteralDecoderPlugin, Float64DecoderPlugin, StringDecoderPlugin, RecordDecoderPlugin ]
+	[ BooleanDecoderPlugin, Float64DecoderPlugin, StringDecoderPlugin, RecordDecoderPlugin ]
 
 export const encodeJsonValue = makeEncoder(JsonValueSchema, JsonValueEncoderPlugin)
 export const decodeJsonValue = makeDecoder(JsonValueSchema, JsonValueDecoderPlugin)
