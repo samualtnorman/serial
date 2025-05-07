@@ -11,8 +11,11 @@ export const DateEncoderPlugin: EncoderPlugin = [
 	{
 		tag: DateTag,
 		encode(value, _schema, callPlugin) {
-			if (value instanceof Date)
-				return callPlugin(Int54Schema, value.getTime())
+			if (value instanceof Date) {
+				const time = value.getTime()
+
+				return callPlugin(Int54Schema, isNaN(time) ? Number.MAX_SAFE_INTEGER : time)
+			}
 		}
 	},
 	Int54EncoderPlugin
