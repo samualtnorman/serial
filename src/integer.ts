@@ -2,6 +2,20 @@ import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
 import { makeDecoder } from "./decoder"
 import { makeEncoder } from "./encoder"
 
+const Uint8Tag = Symbol(`Uint8`)
+
+export const Uint8Schema = { tag: Uint8Tag } as Schema<number>
+
+export const Uint8EncoderPlugin: EncoderPlugin = {
+	tag: Uint8Tag,
+	encode(value) {
+		if (typeof value == `number` && value >= 0 && value <= 255)
+			return [ value ]
+	}
+}
+
+export const Uint8DecoderPlugin: DecoderPlugin = { tag: Uint8Tag, decode: (data, index) => data[index.$++] }
+
 const Int54Tag = Symbol(`Int54`)
 
 export const Int54Schema = { tag: Int54Tag } as Schema<number>
