@@ -1,5 +1,7 @@
-import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
 import * as Bleb from "bleb"
+import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
+import { makeDecoder } from "./decoder"
+import { makeEncoder } from "./encoder"
 
 const StringTag = Symbol(`String`)
 
@@ -24,3 +26,6 @@ export const StringDecoderPlugin: DecoderPlugin = {
 		return new TextDecoder().decode(new Uint8Array(data.slice(index.$, index.$ += length)))
 	}
 }
+
+export const encodeString = makeEncoder(StringSchema, [ StringEncoderPlugin ])
+export const decodeString = makeDecoder(StringSchema, [ StringDecoderPlugin ])

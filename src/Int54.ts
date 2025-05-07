@@ -1,4 +1,6 @@
 import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
+import { makeDecoder } from "./decoder"
+import { makeEncoder } from "./encoder"
 
 const Int54Tag = Symbol(`Int54`)
 
@@ -20,3 +22,6 @@ export const Int54DecoderPlugin: DecoderPlugin = {
 		return Number(new BigInt64Array(new Uint8Array([ ...slice, slice[6]! & 0b1000_0000 ? 255 : 0 ]).buffer)[0])
 	}
 }
+
+export const encodeInt54 = makeEncoder(Int54Schema, [ Int54EncoderPlugin ])
+export const decodeInt54 = makeDecoder(Int54Schema, [ Int54DecoderPlugin ])
