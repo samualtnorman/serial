@@ -22,3 +22,15 @@ export const Float64DecoderPlugin: DecoderPlugin = {
 
 export const encodeFloat64 = makeEncoder(Float64Schema, [ Float64EncoderPlugin ])
 export const decodeFloat64 = makeDecoder(Float64Schema, [ Float64DecoderPlugin ])
+
+if (import.meta.vitest) {
+	const { test, expect } = import.meta.vitest
+
+	test(`pi`, () => {
+		expect(decodeFloat64(encodeFloat64(Math.PI))).toBe(Math.PI)
+	})
+
+	test(`NaN`, () => {
+		expect(decodeFloat64(encodeFloat64(NaN))).toBe(NaN)
+	})
+}

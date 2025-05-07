@@ -29,3 +29,10 @@ export const StringDecoderPlugin: DecoderPlugin = {
 
 export const encodeString = makeEncoder(StringSchema, [ StringEncoderPlugin ])
 export const decodeString = makeDecoder(StringSchema, [ StringDecoderPlugin ])
+
+if (import.meta.vitest) {
+	const { test, expect } = import.meta.vitest
+
+	test(`hello world`, () => expect(decodeString(encodeString(`hello world`))).toBe(`hello world`))
+	test(`empty`, () => expect(decodeString(encodeString(``))).toBe(``))
+}

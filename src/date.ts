@@ -30,3 +30,19 @@ export const DateDecoderPlugin: DecoderPlugin = [
 
 export const encodeDate = makeEncoder(DateSchema, [ DateEncoderPlugin ])
 export const decodeDate = makeDecoder(DateSchema, [ DateDecoderPlugin ])
+
+if (import.meta.vitest) {
+	const { test, expect } = import.meta.vitest
+
+	test(`valid date`, () => {
+		const date = new Date(1746610869504)
+
+		expect(decodeDate(encodeDate(date))).toStrictEqual(date)
+	})
+
+	test(`invalid date`, () => {
+		const date = new Date(NaN)
+
+		expect(decodeDate(encodeDate(date))).toStrictEqual(date)
+	})
+}

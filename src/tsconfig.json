@@ -5,6 +5,6 @@
 		"declaration": true,
 		"outDir": "../dist",
 		"lib": [ "ESNext", "DOM" ],
-		"types": [ "@total-typescript/ts-reset", "babel-plugin-here/env" ]
+		"types": [ "@total-typescript/ts-reset", "babel-plugin-here/env", "vitest/importMeta" ]
 	}
 }

@@ -25,3 +25,11 @@ export const Int54DecoderPlugin: DecoderPlugin = {
 
 export const encodeInt54 = makeEncoder(Int54Schema, [ Int54EncoderPlugin ])
 export const decodeInt54 = makeDecoder(Int54Schema, [ Int54DecoderPlugin ])
+
+if (import.meta.vitest) {
+	const { test, expect } = import.meta.vitest
+
+	test(`0`, () => expect(decodeInt54(encodeInt54(0))).toBe(0))
+	test(`5706099053547292`, () => expect(decodeInt54(encodeInt54(5706099053547292))).toBe(5706099053547292))
+	test(`-3121907212409934`, () => expect(decodeInt54(encodeInt54(-3121907212409934))).toBe(-3121907212409934))
+}
