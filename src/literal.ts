@@ -26,3 +26,7 @@ export const LiteralDecoderPlugin: DecoderPlugin = {
 		return schema.value
 	}
 }
+
+export const NullSchema = literalSchema(null)
+export const FalseSchema = literalSchema(false)
+export const TrueSchema = literalSchema(true)

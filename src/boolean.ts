@@ -1,5 +1,4 @@
-import { FalseSchema } from "./false"
-import { TrueSchema } from "./true"
+import { FalseSchema, TrueSchema } from "./literal"
 import { unionSchema } from "./union"
 
 export const BooleanSchema = unionSchema([ FalseSchema, TrueSchema ])
