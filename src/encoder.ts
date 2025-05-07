@@ -16,6 +16,6 @@ export const makeEncoder = <T>(schema: Schema<T>, plugins: EncoderPlugin[]) => {
 		if (!plugin)
 			throw Error(`Missing plugin ${schema.tag.description}`)
 
-		return plugin.encode(schema, callPlugin, value)
+		return plugin.encode(value, schema, callPlugin)
 	}
 }

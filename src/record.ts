@@ -18,7 +18,7 @@ const isRecordSchema = (schema: Schema): schema is RecordSchema => schema.tag ==
 export const RecordEncoderPlugin: EncoderPlugin = [
 	{
 		tag: RecordTag,
-		encode(schema, callPlugin, value) {
+		encode(value, schema, callPlugin) {
 			assert(isRecordSchema(schema), HERE)
 
 			if (isRecord(value))
@@ -32,7 +32,7 @@ export const RecordEncoderPlugin: EncoderPlugin = [
 export const RecordDecoderPlugin: DecoderPlugin = [
 	{
 		tag: RecordTag,
-		decode(schema, callPlugin) {
+		decode(_data, _index, schema, callPlugin) {
 			assert(isRecordSchema(schema), HERE)
 
 			return Object.fromEntries(callPlugin(schema.schema).map(({ key, value }) => [ key, value ]))

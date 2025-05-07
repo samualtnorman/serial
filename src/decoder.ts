@@ -17,7 +17,7 @@ export const makeDecoder = <T>(schema: Schema<T>, plugins: DecoderPlugin[]) => {
 			if (!plugin)
 				throw Error(`Missing plugin ${schema.tag.description}`)
 
-			return plugin.decode(schema, callPlugin, data, index)
+			return plugin.decode(data, index, schema, callPlugin)
 		}
 	}
 }

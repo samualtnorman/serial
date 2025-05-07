@@ -17,7 +17,7 @@ const isObjectSchema = (schema: Schema): schema is ObjectSchema => schema.tag ==
 
 export const ObjectEncoderPlugin: EncoderPlugin = {
 	tag: ObjectTag,
-	encode(schema, callPlugin, value) {
+	encode(value, schema, callPlugin) {
 		assert(isObjectSchema(schema), HERE)
 
 		if (isRecord(value)) {
@@ -39,7 +39,7 @@ export const ObjectEncoderPlugin: EncoderPlugin = {
 
 export const ObjectDecoderPlugin: DecoderPlugin = {
 	tag: ObjectTag,
-	decode(schema, callPlugin) {
+	decode(_data, _index, schema, callPlugin) {
 		assert(isObjectSchema(schema), HERE)
 
 		const result: Record<PropertyKey, unknown> = {}

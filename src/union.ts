@@ -12,7 +12,7 @@ const isUnionSchema = (schema: Schema): schema is UnionSchema => schema.tag == U
 
 export const UnionEncoderPlugin: EncoderPlugin = {
 	tag: UnionTag,
-	encode(schema, callPlugin, value) {
+	encode(value, schema, callPlugin) {
 		assert(isUnionSchema(schema), HERE)
 
 		for (const [ index, subschema ] of schema.schemas.entries()) {
@@ -26,7 +26,7 @@ export const UnionEncoderPlugin: EncoderPlugin = {
 
 export const UnionDecoderPlugin: DecoderPlugin = {
 	tag: UnionTag,
-	decode(schema, callPlugin, data, index) {
+	decode(data, index, schema, callPlugin) {
 		assert(isUnionSchema(schema), HERE)
 
 		return callPlugin(ensure(schema.schemas[Bleb.toNumber(data, index)], HERE))

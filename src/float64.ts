@@ -8,7 +8,7 @@ export const Float64Schema = { tag: Float64Tag } as Schema<number>
 
 export const Float64EncoderPlugin: EncoderPlugin = {
 	tag: Float64Tag,
-	encode(_schema, _callPlugin, value) {
+	encode(value) {
 		if (typeof value == `number`)
 			return [ ...new Uint8Array(new Float64Array([ value ]).buffer) ]
 	}
@@ -16,7 +16,7 @@ export const Float64EncoderPlugin: EncoderPlugin = {
 
 export const Float64DecoderPlugin: DecoderPlugin = {
 	tag: Float64Tag,
-	decode: (_schema, _callPlugin, data, index) =>
+	decode: (data, index) =>
 		new Float64Array(new Uint8Array(data.slice(index.$, index.$ += 8)).buffer)[0]
 }
 

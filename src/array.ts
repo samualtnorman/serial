@@ -12,7 +12,7 @@ const isArraySchema = (schema: Schema): schema is ArraySchema => schema.tag == A
 
 export const ArrayEncoderPlugin: EncoderPlugin = {
 	tag: ArrayTag,
-	encode(schema, callPlugin, value) {
+	encode(value, schema, callPlugin) {
 		assert(isArraySchema(schema), HERE)
 
 		if (Array.isArray(value)) {
@@ -34,7 +34,7 @@ export const ArrayEncoderPlugin: EncoderPlugin = {
 
 export const ArrayDecoderPlugin: DecoderPlugin = {
 	tag: ArrayTag,
-	decode(schema, callPlugin, data, index) {
+	decode(data, index, schema, callPlugin) {
 		assert(isArraySchema(schema), HERE)
 
 		const length = Bleb.toNumber(data, index)

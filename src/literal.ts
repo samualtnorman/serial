@@ -11,7 +11,7 @@ const isLiteralSchema = (schema: Schema): schema is LiteralSchema => schema.tag 
 
 export const LiteralEncoderPlugin: EncoderPlugin = {
 	tag: LiteralTag,
-	encode(schema, _, value) {
+	encode(value, schema) {
 		assert(isLiteralSchema(schema), HERE)
 
 		return Object.is(value, schema.value) ? [] : undefined
@@ -20,7 +20,7 @@ export const LiteralEncoderPlugin: EncoderPlugin = {
 
 export const LiteralDecoderPlugin: DecoderPlugin = {
 	tag: LiteralTag,
-	decode(schema) {
+	decode(_data, _index, schema) {
 		assert(isLiteralSchema(schema), HERE)
 
 		return schema.value

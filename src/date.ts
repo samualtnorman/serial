@@ -10,7 +10,7 @@ export const DateSchema = { tag: DateTag } as Schema<Date>
 export const DateEncoderPlugin: EncoderPlugin = [
 	{
 		tag: DateTag,
-		encode(_, callPlugin, value) {
+		encode(value, _schema, callPlugin) {
 			if (value instanceof Date)
 				return callPlugin(Int54Schema, value.getTime())
 		}
@@ -21,7 +21,7 @@ export const DateEncoderPlugin: EncoderPlugin = [
 export const DateDecoderPlugin: DecoderPlugin = [
 	{
 		tag: DateTag,
-		decode(_schema, callPlugin, _data, _index) {
+		decode(_data, _index, _schema, callPlugin) {
 			return new Date(callPlugin(Int54Schema))
 		}
 	},

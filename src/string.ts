@@ -9,7 +9,7 @@ export const StringSchema = { tag: StringTag } as Schema<string>
 
 export const StringEncoderPlugin: EncoderPlugin = {
 	tag: StringTag,
-	encode(_schema, _callPlugin, value) {
+	encode(value) {
 		if (typeof value == `string`) {
 			const encoded = new TextEncoder().encode(value)
 
@@ -20,7 +20,7 @@ export const StringEncoderPlugin: EncoderPlugin = {
 
 export const StringDecoderPlugin: DecoderPlugin = {
 	tag: StringTag,
-	decode: (_schema, _callPlugin, data, index) => {
+	decode: (data, index) => {
 		const length = Bleb.toNumber(data, index)
 
 		return new TextDecoder().decode(new Uint8Array(data.slice(index.$, index.$ += length)))

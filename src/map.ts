@@ -16,7 +16,7 @@ const isMapSchema = (schema: Schema): schema is MapSchema => schema.tag == MapTa
 export const MapEncoderPlugin: EncoderPlugin = [
 	{
 		tag: MapTag,
-		encode(schema, callPlugin, value) {
+		encode(value, schema, callPlugin) {
 			assert(isMapSchema(schema), HERE)
 
 			if (value instanceof Map)
@@ -30,7 +30,7 @@ export const MapEncoderPlugin: EncoderPlugin = [
 export const MapDecoderPlugin: DecoderPlugin = [
 	{
 		tag: MapTag,
-		decode(schema, callPlugin) {
+		decode(_data, _index, schema, callPlugin) {
 			assert(isMapSchema(schema), HERE)
 
 			return new Map(callPlugin(schema.schema).map(({ key, value }) => [ key, value ]))
