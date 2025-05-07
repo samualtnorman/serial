@@ -1,12 +1,12 @@
 import { assert, ensure } from "@samual/lib/assert"
 import * as Bleb from "bleb"
-import type { DecoderPlugin, EncoderPlugin, Schema } from "./common"
+import type { DecoderPlugin, EncoderPlugin, InferSchemaType, Schema } from "./common"
 
 const UnionTag = Symbol(`Union`)
 type UnionTag = typeof UnionTag
 
 export type UnionSchema<T = unknown> = Schema<T> & { tag: UnionTag, schemas: Schema[] }
-export const unionSchema = <TOption extends Schema>(schemas: TOption[]) => ({ tag: UnionTag, schemas }) as any as Schema<TOption extends Schema<infer T> ? T : never>
+export const unionSchema = <TOption extends Schema>(schemas: TOption[]) => ({ tag: UnionTag, schemas }) as any as Schema<InferSchemaType<TOption>>
 
 const isUnionSchema = (schema: Schema): schema is UnionSchema => schema.tag == UnionTag
 

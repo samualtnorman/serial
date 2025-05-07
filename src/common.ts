@@ -15,3 +15,5 @@ export type DecoderPlugin = {
 	tag: symbol
 	decode: (data: number[], index: { $: number }, schema: Schema, callPlugin: <T>(schema: Schema<T>) => T) => unknown
 } | DecoderPlugin[]
+
+export type InferSchemaType<TSchema extends Schema> = TSchema extends Schema<infer T> ? T : never
