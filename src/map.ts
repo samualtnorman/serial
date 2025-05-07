@@ -1,6 +1,6 @@
 import { assert } from "@samual/lib/assert"
-import { ArrayDecoderPlugin, ArrayEncoderPlugin, arraySchema } from "./array"
 import type { DecoderPlugin, EncoderPlugin, Schema } from "."
+import { ArrayDecoderPlugin, ArrayEncoderPlugin, arraySchema } from "./array"
 import { ObjectDecoderPlugin, ObjectEncoderPlugin, objectSchema } from "./object"
 
 const MapTag = Symbol(`Map`)

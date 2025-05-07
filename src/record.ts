@@ -1,9 +1,9 @@
 import { assert } from "@samual/lib/assert"
-import { ArrayDecoderPlugin, ArrayEncoderPlugin, arraySchema } from "./array"
-import type { DecoderPlugin, EncoderPlugin, Schema } from "."
-import { ObjectDecoderPlugin, ObjectEncoderPlugin, objectSchema } from "./object"
 import { isRecord } from "@samual/lib/isRecord"
+import type { DecoderPlugin, EncoderPlugin, Schema } from "."
+import { ArrayDecoderPlugin, ArrayEncoderPlugin, arraySchema } from "./array"
 import { getKeys } from "./internal"
+import { ObjectDecoderPlugin, ObjectEncoderPlugin, objectSchema } from "./object"
 
 const RecordTag = Symbol(`Record`)
 type RecordTag = typeof RecordTag
