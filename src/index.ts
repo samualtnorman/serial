@@ -1,12 +1,8 @@
 import { assert, ensure } from "@samual/lib/assert"
 import { ArrayDecoderPlugin, ArrayEncoderPlugin, arraySchema } from "./array"
 import { BooleanSchema } from "./boolean"
-import { Float64DecoderPlugin, Float64EncoderPlugin, Float64Schema } from "./float"
-import { FixedLengthHexStringDecoderPlugin, FixedLengthHexStringEncoderPlugin, fixedLengthHexStringSchema } from "./hex"
-import { Int54DecoderPlugin, Int54EncoderPlugin, Int54Schema, Uint8DecoderPlugin, Uint8EncoderPlugin, Uint8Schema } from "./integer"
 import { LiteralDecoderPlugin, LiteralEncoderPlugin, literalSchema } from "./literal"
 import { ObjectDecoderPlugin, ObjectEncoderPlugin, objectSchema } from "./object"
-import { StringDecoderPlugin, StringEncoderPlugin, StringSchema } from "./string"
 import { UnionDecoderPlugin, UnionEncoderPlugin, unionSchema } from "./union"
 
 declare type Type = { readonly Type: unique symbol }["Type"]
@@ -71,6 +67,10 @@ export const makeDecoder = <T>(schema: Schema<T>, plugins: DecoderPlugin[]) => {
 
 if (import.meta.vitest) {
 	const { test, expect } = import.meta.vitest
+	const { Float64DecoderPlugin, Float64EncoderPlugin, Float64Schema } = await import("./float")
+	const { FixedLengthHexStringDecoderPlugin, FixedLengthHexStringEncoderPlugin, fixedLengthHexStringSchema } = await import("./hex")
+	const { Int54DecoderPlugin, Int54EncoderPlugin, Int54Schema, Uint8DecoderPlugin, Uint8EncoderPlugin, Uint8Schema } = await import("./integer")
+	const { StringDecoderPlugin, StringEncoderPlugin, StringSchema } = await import("./string")
 	const GuidTag = Symbol(`Guid`)
 	const GuidSchema = { tag: GuidTag } as Schema<string>
 
