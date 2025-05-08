@@ -2,9 +2,9 @@
 	"include": [ "*" ],
 	"compilerOptions": {
 		"noEmit": true,
-		"lib": [ "es2022" ],
+		"lib": [ "ES2023" ],
 		"types": [ "@total-typescript/ts-reset" ],
-		"target": "es2022",
+		"target": "ES2023",
 		"module": "preserve",
 		"moduleResolution": "bundler",
 		"checkJs": true,
