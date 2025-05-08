@@ -1,7 +1,7 @@
 import { assert, ensure } from "@samual/lib/assert"
 import { ArrayDecoderPlugin, ArrayEncoderPlugin, arraySchema } from "./array"
 import { BooleanSchema } from "./boolean"
-import { Float64DecoderPlugin, Float64EncoderPlugin, Float64Schema } from "./float64"
+import { Float64DecoderPlugin, Float64EncoderPlugin, Float64Schema } from "./float"
 import { FixedLengthHexStringDecoderPlugin, FixedLengthHexStringEncoderPlugin, fixedLengthHexStringSchema } from "./hex"
 import { Int54DecoderPlugin, Int54EncoderPlugin, Int54Schema, Uint8DecoderPlugin, Uint8EncoderPlugin, Uint8Schema } from "./integer"
 import { LiteralDecoderPlugin, LiteralEncoderPlugin, literalSchema } from "./literal"
