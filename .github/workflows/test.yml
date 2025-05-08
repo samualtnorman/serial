@@ -14,5 +14,4 @@ jobs:
       uses: actions/setup-node@v4
       with: { node-version: "${{matrix.node-version}}", registry-url: https://registry.npmjs.org, cache: pnpm }
 
-    - run: echo $PWD/node_modules/.bin:$PATH > $GITHUB_PATH
-    - run: vitest run
+    - run: scripts/test.sh
