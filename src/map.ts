@@ -21,7 +21,7 @@ export const MapEncoderPlugin: EncoderPlugin = [
 			assert(isMapSchema(schema), HERE)
 
 			if (value instanceof Map)
-				return callPlugin(schema.schema, [ ...value.entries().map(([ key, value ]) => ({ key, value })) ])
+				return callPlugin(schema.schema, [ ...value.entries() ].map(([ key, value ]) => ({ key, value })))
 		}
 	},
 	ArrayEncoderPlugin,
