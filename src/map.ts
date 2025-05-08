@@ -1,6 +1,7 @@
 import { assert } from "@samual/lib/assert"
-import type { DecoderPlugin, EncoderPlugin, Schema } from "."
+import { makeDecoder, makeEncoder, type DecoderPlugin, type EncoderPlugin, type Schema } from "."
 import { ArrayDecoderPlugin, ArrayEncoderPlugin, arraySchema } from "./array"
+import { Uint8DecoderPlugin, Uint8EncoderPlugin, Uint8Schema } from "./integer"
 import { ObjectDecoderPlugin, ObjectEncoderPlugin, objectSchema } from "./object"
 
 const MapTag = Symbol(`Map`)
@@ -39,3 +40,16 @@ export const MapDecoderPlugin: DecoderPlugin = [
 	ArrayDecoderPlugin,
 	ObjectDecoderPlugin
 ]
+
+if (import.meta.vitest) {
+	const { test, expect } = import.meta.vitest
+
+	test(`map`, () => {
+		const Uint8ToUint8MapSchema = mapSchema(Uint8Schema, Uint8Schema)
+		const encodeUint8ToUint8Map = makeEncoder(Uint8ToUint8MapSchema, [ MapEncoderPlugin, Uint8EncoderPlugin ])
+		const decodeUint8ToUint8Map = makeDecoder(Uint8ToUint8MapSchema, [ MapDecoderPlugin, Uint8DecoderPlugin ])
+		const map = new Map([ [ 1, 2 ], [ 3, 4 ], [ 5, 6 ] ])
+
+		expect(decodeUint8ToUint8Map(encodeUint8ToUint8Map(map))).toStrictEqual(map)
+	})
+}
