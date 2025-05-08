@@ -5,6 +5,10 @@
 		".": "./index.js",
 		"./*": "./*.js"
 	},
+	"engines": {
+		"node": ">=20.10",
+		"pnpm": "^10"
+	},
 	"dependencies": {
 		"@samual/lib": "0.13.1-5f3d742",
 		"bleb": "0.1.0-571851d"
