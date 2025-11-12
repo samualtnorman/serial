@@ -1,5 +1,5 @@
-import { ensure } from "@samual/lib/assert"
 import { makeDecoder, makeEncoder, type DecoderPlugin, type EncoderPlugin, type Schema } from "."
+import { ensureNotNullish } from "./internal"
 
 const Uint8Tag = Symbol(`Uint8`)
 
@@ -14,7 +14,7 @@ export const Uint8EncoderPlugin: EncoderPlugin = {
 }
 
 export const Uint8DecoderPlugin: DecoderPlugin =
-    { tag: Uint8Tag, decode: (data, index): number => ensure(data[index.$++], HERE) }
+    { tag: Uint8Tag, decode: (data, index): number => ensureNotNullish(data[index.$++], HERE) }
 
 export const encodeUint8 = makeEncoder(Uint8Schema, [ Uint8EncoderPlugin ])
 export const decodeUint8 = makeDecoder(Uint8Schema, [ Uint8DecoderPlugin ])
