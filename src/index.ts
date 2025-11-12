@@ -69,7 +69,7 @@ if (import.meta.vitest) {
 	const { test, expect } = import.meta.vitest
 	const { Float64DecoderPlugin, Float64EncoderPlugin, Float64Schema } = await import("./float")
 	const { FixedLengthHexStringDecoderPlugin, FixedLengthHexStringEncoderPlugin, fixedLengthHexStringSchema } = await import("./hex")
-	const { Int54DecoderPlugin, Int54EncoderPlugin, Int54Schema, Uint8DecoderPlugin, Uint8EncoderPlugin, Uint8Schema } = await import("./integer")
+	const { Int54DecoderPlugin, Int54EncoderPlugin, Int54Schema, Uint8DecoderPlugin, Uint8EncoderPlugin, Uint8Schema } = await import("./int54")
 	const { StringDecoderPlugin, StringEncoderPlugin, StringSchema } = await import("./string")
 	const GuidTag = Symbol(`Guid`)
 	const GuidSchema = { tag: GuidTag } as Schema<string>

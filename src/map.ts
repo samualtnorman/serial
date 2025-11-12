@@ -1,8 +1,8 @@
 import { assert } from "@samual/lib/assert"
 import { makeDecoder, makeEncoder, type DecoderPlugin, type EncoderPlugin, type Schema } from "."
 import { ArrayDecoderPlugin, ArrayEncoderPlugin, arraySchema } from "./array"
-import { Uint8DecoderPlugin, Uint8EncoderPlugin, Uint8Schema } from "./integer"
 import { ObjectDecoderPlugin, ObjectEncoderPlugin, objectSchema } from "./object"
+import { Uint8DecoderPlugin, Uint8EncoderPlugin, Uint8Schema } from "./uint8"
 
 const MapTag = Symbol(`Map`)
 type MapTag = typeof MapTag

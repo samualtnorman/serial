@@ -1,5 +1,5 @@
 import { makeDecoder, makeEncoder, type DecoderPlugin, type EncoderPlugin, type Schema } from "."
-import { Int54DecoderPlugin, Int54EncoderPlugin, Int54Schema } from "./integer"
+import { Int54DecoderPlugin, Int54EncoderPlugin, Int54Schema } from "./int54"
 
 const DateTag = Symbol(`Date`)
 
