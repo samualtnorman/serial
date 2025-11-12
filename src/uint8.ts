@@ -1,5 +1,5 @@
 import { ensure } from "@samual/lib/assert"
-import type { DecoderPlugin, EncoderPlugin, Schema } from "."
+import { makeDecoder, makeEncoder, type DecoderPlugin, type EncoderPlugin, type Schema } from "."
 
 const Uint8Tag = Symbol(`Uint8`)
 
@@ -14,4 +14,16 @@ export const Uint8EncoderPlugin: EncoderPlugin = {
 }
 
 export const Uint8DecoderPlugin: DecoderPlugin =
-    { tag: Uint8Tag, decode: (data, index): number => ensure(data[index.$++]) }
+    { tag: Uint8Tag, decode: (data, index): number => ensure(data[index.$++], HERE) }
+
+export const encodeUint8 = makeEncoder(Uint8Schema, [ Uint8EncoderPlugin ])
+export const decodeUint8 = makeDecoder(Uint8Schema, [ Uint8DecoderPlugin ])
+
+if (import.meta.vitest) {
+    const { test, expect } = import.meta.vitest
+
+    test(`works`, () => {
+        for (const item of [ 0, 255, 1, 163, 90, 86, 209 ])
+            expect(decodeUint8(encodeUint8(item))).toBe(item)
+    })
+}
