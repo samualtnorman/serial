@@ -2,7 +2,6 @@ import { assert } from "@samual/lib/assert"
 import { isRecord } from "@samual/lib/isRecord"
 import type { DecoderPlugin, EncoderPlugin, Schema } from "."
 import { ArrayDecoderPlugin, ArrayEncoderPlugin, arraySchema } from "./array"
-import { getKeys } from "./internal"
 import { ObjectDecoderPlugin, ObjectEncoderPlugin, objectSchema } from "./object"
 
 const RecordTag = Symbol(`Record`)
@@ -22,7 +21,7 @@ export const RecordEncoderPlugin: EncoderPlugin = [
 			assert(isRecordSchema(schema), HERE)
 
 			if (isRecord(value))
-				return callPlugin(schema.schema, getKeys(value).map(key => ({ key, value: value[key] })))
+				return callPlugin(schema.schema, Reflect.ownKeys(value).map(key => ({ key, value: value[key] })))
 		}
 	},
 	ArrayEncoderPlugin,

@@ -1,7 +1,6 @@
 import { assert } from "@samual/lib/assert"
 import { isRecord } from "@samual/lib/isRecord"
 import type { DecoderPlugin, EncoderPlugin, InferSchemaType, Schema } from "."
-import { getKeys } from "./internal"
 
 const ObjectTag = Symbol(`Object`)
 type ObjectTag = typeof ObjectTag
@@ -23,7 +22,7 @@ export const ObjectEncoderPlugin: EncoderPlugin = {
 		if (isRecord(value)) {
 			const result: number[] = []
 
-			for (const key of getKeys(schema.layout)) {
+			for (const key of Reflect.ownKeys(schema.layout)) {
 				const encodedValue = callPlugin(schema.layout[key]!, value[key])
 
 				if (!encodedValue)
@@ -44,7 +43,7 @@ export const ObjectDecoderPlugin: DecoderPlugin = {
 
 		const result: Record<PropertyKey, unknown> = {}
 
-		for (const key of getKeys(schema.layout))
+		for (const key of Reflect.ownKeys(schema.layout))
 			result[key] = callPlugin(schema.layout[key]!)
 
 		return result
