@@ -41,7 +41,7 @@ export const makeEncoder = <T>(schema: Schema<T>, plugins: EncoderPlugin[]) => {
 		return plugin.encode(value, schema, callPlugin)
 	}
 
-	return (value: T) => ensure(callPlugin(schema, value), HERE)
+	return (value: T) => ensure(callPlugin(schema, value), `${HERE} Failed to serialise`)
 }
 
 export const makeDecoder = <T>(schema: Schema<T>, plugins: DecoderPlugin[]) => {
