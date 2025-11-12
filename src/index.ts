@@ -32,9 +32,7 @@ export const makeEncoder = <T>(schema: Schema<T>, plugins: EncoderPlugin[]) => {
 		return [ plugin.tag, plugin ]
 	}))
 
-	return (value: T) => ensure(callPlugin(schema, value), HERE)
-
-	function callPlugin(schema: Schema, value: unknown) {
+	const callPlugin = (schema: Schema, value: unknown) => {
 		const plugin = tagToPluginMap.get(schema.tag)
 
 		if (!plugin)
@@ -42,6 +40,8 @@ export const makeEncoder = <T>(schema: Schema<T>, plugins: EncoderPlugin[]) => {
 
 		return plugin.encode(value, schema, callPlugin)
 	}
+
+	return (value: T) => ensure(callPlugin(schema, value), HERE)
 }
 
 export const makeDecoder = <T>(schema: Schema<T>, plugins: DecoderPlugin[]) => {
@@ -52,9 +52,7 @@ export const makeDecoder = <T>(schema: Schema<T>, plugins: DecoderPlugin[]) => {
 	}))
 
 	return (data: number[], index = { $: 0 }) => {
-		return callPlugin(schema) as T
-
-		function callPlugin(schema: Schema) {
+		const callPlugin = (schema: Schema) => {
 			const plugin = tagToPluginMap.get(schema.tag)
 
 			if (!plugin)
@@ -62,6 +60,8 @@ export const makeDecoder = <T>(schema: Schema<T>, plugins: DecoderPlugin[]) => {
 
 			return plugin.decode(data, index, schema, callPlugin)
 		}
+
+		return callPlugin(schema) as T
 	}
 }
 
