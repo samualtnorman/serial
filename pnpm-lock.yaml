@@ -11,6 +11,9 @@ importers:
       '@samual/lib':
         specifier: 0.13.1-5f3d742
         version: 0.13.1-5f3d742
+      '@std/encoding':
+        specifier: jsr:^1.0.10
+        version: '@jsr/std__encoding@1.0.10'
       bleb:
         specifier: 0.1.0-571851d
         version: 0.1.0-571851d
@@ -736,6 +739,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@jsr/std__encoding@1.0.10':
+    resolution: {integrity: sha512-WK2njnDTyKefroRNk2Ooq7GStp6Y0ccAvr4To+Z/zecRAGe7+OSvH9DbiaHpAKwEi2KQbmpWMOYsdNt+TsdmSw==, tarball: https://npm.jsr.io/~/11/@jsr/std__encoding/1.0.10.tgz}
 
   '@rollup/plugin-babel@6.0.4':
     resolution: {integrity: sha512-YF7Y52kFdFT/xVSuVdjkV5ZdX/3YtmX0QulG+x0taQOtJdHYzVU61aSSkAgVJ7NOv6qPkIYiJSgSWWN/DM5sGw==}
@@ -2179,6 +2185,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  '@jsr/std__encoding@1.0.10': {}
 
   '@rollup/plugin-babel@6.0.4(@babel/core@7.27.1)(rollup@4.40.1)':
     dependencies:
